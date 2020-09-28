@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import ListCoursesComponent from '../component/ListCoursesComponent';
-import dash from '../component/dash';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+// import dash from '../component/dash';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Login from '../component/Login';
+import AuthenticatedRoute from './AuthenticatedRoute';
+import LogoutComponent from './LogoutComponent';
+import MenuComponent from './MenuComponent';
 
 class InstructorApp extends Component {
 
@@ -12,6 +15,8 @@ class InstructorApp extends Component {
     this.state = {
       message: false,
     };
+
+    this.handler = this.handler.bind(this)
   }
 
   handler() {
@@ -21,22 +26,23 @@ class InstructorApp extends Component {
   }
 
   render() {
-    return (
-        <div className="app-routes">
-        <BrowserRouter>
-          <Switch>
-            <Route path="/login" component={Login} render={props =>{this.state.handler}/>
-            { this.state.message &&
-            <Route path="/home" component={ListCoursesComponent} />
-            }
-            { this.state.message &&
-            <Route path="/dash" component={dash} />
-            }
-          </Switch>
-         </BrowserRouter>
-        </div>
-      )
-  }
+        return (
+            <>
+                <Router>
+                    <>
+                        <MenuComponent />
+                        <Switch>
+                            <Route path="/" exact component={Login} />
+                            <Route path="/login" component={Login} />
+                            <AuthenticatedRoute path="/logout" exact component={LogoutComponent} />
+                            <AuthenticatedRoute path="/home" exact component={ListCoursesComponent} />
+                        </Switch>
+                    </>
+                </Router>
+            </>
+        )
+    }
+
 }
 
 

@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.HomeEntity;
+import com.example.demo.AuthenticationBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,10 @@ public class DemoApplicationController {
 		return new ResponseEntity<Boolean>(isValid, HttpStatus.OK);
     }
 
+	@GetMapping("/basicauth")
+	public AuthenticationBean authenticate() {
+		return new AuthenticationBean("You are authenticated");
+	}
 
 	@GetMapping("/users/home")
 	public List<HomeEntity> getHome(){

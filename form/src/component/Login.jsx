@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css'
-import axios from 'axios'
-// import store from 'store';
-// import { useHistory } from "react-router-dom";
-// import { Link } from "react-router-dom";
-// import { Redirect } from "react-router-dom";
-// import CourseDataService from '../service/CourseDataService'
-// import ListCoursesComponent from '../component/ListCoursesComponent';
+// import axios from 'axios'
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import AuthenticationService from '../service/AuthenticationService';
 
 class Login extends Component {
 
@@ -19,6 +15,8 @@ constructor(props)
       password: '',
       error1: "false",
       error2: '',
+      hasLoginFailed: false,
+      showSuccessMessage: false
   };
 
  this.onChange1 = this.onChange1.bind(this);
@@ -36,94 +34,57 @@ constructor(props)
     e.preventDefault();
     console.log(this.state);
 
-    // const history = useHistory();
+    if(this.state.username==='admin' && this.state.password==='admin'){
+        AuthenticationService.registerSuccessfulLogin(this.state.username,this.state.password)
+        this.setState({showSuccessMessage:true})
+        this.setState({hasLoginFailed:false})
+        this.props.history.push(`/home`)
+    }
+    else {
+         this.setState({showSuccessMessage:false})
+         this.setState({hasLoginFailed:true})
+    }
 
-    this.setState({ error1: "false" });
-
-    axios.post('http://localhost:8081/users/login',this.state)
-        .then(response => {
-          console.log(response.data);
-
-          if(response.data)
-          {
-            this.setState({
-              error1: "true"
-            })
-            console.log("you're logged in. yay!");
-            // store.set('loggedIn', true);
-            // history.push("/home");
-            this.props.history.push('/home');
-            this.setState({
-              error2: ""
-            })
-          }
-
-          else
-          {
-            this.setState({
-              error1: "false"
-            })
-            console.log("not logged in");
-            this.setState({
-              error2: "Please enter correct credentials"
-            })
-          }
-
-        })
-        .catch(error => {
-          console.log(error)
-        })
-
-        // console.log("hi")
-        // if(this.state.error1 === "true")
-        //  {
-        //    console.log("login")
-        //    //this.props.history.push('/dash');
-        //    this.setState({
-        //      error2: ""
-        //    })
-        //
-        //  }
-        // else
-        //  {
-        //    console.log("not login")
-        //    this.setState({
-        //      error2: "Please enter correct credentials"
-        //    })
-        //  }
-
-        this.setState({
-          error1: "false"
-        })
+    // this.setState({ error1: "false" });
+    //s
+    // axios.post('http://localhost:8081/users/login',this.state)
+    //     .then(response => {
+    //       console.log(response.data);
+    //
+    //       if(response.data)
+    //       {
+    //         this.setState({
+    //           error1: "true"
+    //         })
+    //         console.log("you're logged in. yay!");
+    //         // this.props.handler1();
+    //         // <Button onClick = {this.props.handler1}/ >
+    //         this.props.history.push('/home');
+    //         this.setState({
+    //           error2: ""
+    //         })
+    //       }
+    //
+    //       else
+    //       {
+    //         this.setState({
+    //           error1: "false"
+    //         })
+    //         console.log("not logged in");
+    //         this.setState({
+    //           error2: "Please enter correct credentials"
+    //         })
+    //       }
+    //
+    //     })
+    //     .catch(error => {
+    //       console.log(error)
+    //     })
+    //
+    //     this.setState({
+    //       error1: "false"
+    //     })
   }
-
-  // onError= e => {
-  //
-  //       //pro = this.state.error;
-  //       //console.log( this.state.error1);
-  //       console.log("hi")
-  //       if(this.state.error1 === "true")
-  //        {
-  //          console.log("login")
-  //          this.props.history.push('/dash');
-  //          this.setState({
-  //            error2: ""
-  //          })
-  //
-  //        }
-  //       else
-  //        {
-  //          console.log("not login")
-  //          this.setState({
-  //            error2: "Please enter correct credentials"
-  //          })
-  //        }
-  // }
-
-  // onClick(event) {
-  //     this.onSubmit1();
-  //     this.onError();
-  //  }
 
   render() {
 
@@ -131,29 +92,57 @@ constructor(props)
 
     return (
 
-           <div>
-           <form onSubmit = {this.onSubmit1}>
+  <div class="container py-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
 
-                 <p>
-                    <label> Username: </label> <input type="text" name="username" value={username} onChange={this.onChange1} />
-                 </p>
+                    <div class="card rounded-0">
+                        <div class="card-header">
+                            <h3 class="mb-0">Login</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="form" onSubmit = {this.onSubmit1}>
+                            <div>
+                                <label class="custom-control custom-checkbox">
+                                  {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
+                                </label>
 
-                 <p>
-                    <label> Password: </label> <input type="text" name="password" value={password} onChange={this.onChange1}/>
-                 </p>
+                                <label class="custom-control custom-checkbox">
+                                  {this.state.showSuccessMessage && <div>Login Sucessful</div>}
+                                </label>
+                            </div>
 
-                 <button type="submit" > Submit </button>
+                                <div class="form-group">
+                                    <label for="uname1">Username</label>
+                                    <input type="text" class="form-control form-control-lg rounded-0" name="username" value={username} onChange={this.onChange1} id="username" required />
+                                    <div class="invalid-feedback">Oops, you missed this one.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control form-control-lg rounded-0" name="password" value={password} onChange={this.onChange1} id="password" required/>
+                                    <div class="invalid-feedback">Enter your password too!</div>
+                                </div>
 
-                 <p> {this.state.error2} </p>
+                                <div>
+                                    <label class="custom-control custom-checkbox">
+                                       <h3 style={{color:'red'}}> {this.state.error2} </h3>
+                                    </label>
+                                </div>
 
-            </form>
-
-
-           </div>
+                                <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
 
     )
  }
 }
 
-// export default withRouter(Login);
 export default Login;

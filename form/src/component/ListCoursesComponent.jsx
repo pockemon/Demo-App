@@ -29,10 +29,12 @@ class ListCoursesComponent extends Component {
 
     render() {
         return (
-            <div className="container">
-                <h3>Top 4 US-Banks</h3>
-                <div className="container">
-                    <table className="table">
+            <div class="container">
+
+                <div class="container">
+                <h3 style={{margin: '100px'}}>Top 4 US-Banks</h3>
+
+                    <table class="styled-table">
                         <thead>
                             <tr>
                                 <th>Rank</th>
