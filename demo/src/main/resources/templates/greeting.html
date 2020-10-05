@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Demo Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/style.css}" rel="stylesheet" />
+</head>
+<body>
+<h1>Form</h1>
+<form action="#" th:action="@{/login}" th:object="${demoApplicationEntity}" method="post">
+    <p>Username: <input type="text" th:field="*{username}" required/></p>
+    <p>Password: <input type="text" th:field="*{password}" required/></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+
+<div th:if="${error.getMessage()!=null}">
+ <p th:text="${error.getMessage()}" />
+</div>
+
+</body>
+</html>

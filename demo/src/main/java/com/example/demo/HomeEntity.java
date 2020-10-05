@@ -1,8 +1,6 @@
 package com.example.demo;
 
 import javax.persistence.Entity;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class HomeEntity {

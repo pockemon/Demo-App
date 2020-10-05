@@ -3,17 +3,9 @@ package com.example.demo;
 import javax.persistence.Entity;
 
 @Entity
-public class AuthenticationBean {
+public class Error {
 
-    private String message;
-
-    public AuthenticationBean(){
-
-    }
-
-    public AuthenticationBean(String message) {
-        this.message = message;
-    }
+    private String message = " ";
 
     public String getMessage() {
         return message;

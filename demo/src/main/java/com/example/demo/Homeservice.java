@@ -1,11 +1,9 @@
 package com.example.demo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
-import com.example.demo.HomeEntity;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class Homeservice {

@@ -1,0 +1,32 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Demo Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+      <h2> Top 4 US Banks </h2>
+      <div class="Container" >
+          <table class="center" style="background-color: #ffffff; filter: alpha(opacity=40); opacity: 0.95;border:1px red solid;">
+              <thead>
+                 <tr>
+                    <th style="text-align: center">Rank</th>
+                    <th style="text-align: center">Bank name</th>
+                    <th style="text-align: center">Headquaters Location</th>
+                    <th style="text-align: center">Total assets</th>
+                 </tr>
+              </thead>
+
+              <tbody>
+                 <tr th:each="bank : ${banks}">
+                    <td th:text="${bank.rank}" style="text-align: center"></td>
+                    <td th:text="${bank.Bankname}" style="text-align: center"></td>
+                    <td th:text="${bank.headq}" style="text-align: center"></td>
+                    <td th:text="${bank.assets}" style="text-align: center"></td>
+                 </tr>
+              </tbody>
+          </table>
+      </div>
+
+</body>
+</html>
