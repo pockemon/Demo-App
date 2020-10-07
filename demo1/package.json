@@ -1,5 +1,5 @@
 {
-  "name": "form",
+  "name": "demo1",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,16 +8,12 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
     "bootstrap": "^3.3.7",
-    "formik": "^2.1.5",
     "mdbreact": "^4.27.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.3.0",
     "react-dom": "^16.13.1",
-    "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
-    "semantic-ui-react": "^1.3.0",
-    "store": "^2.0.12"
+    "react-scripts": "3.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,8 +35,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "babel-eslint": "^10.1.0"
   }
 }

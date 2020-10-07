@@ -92,45 +92,16 @@ constructor(props)
 
     return (
 
-      <div id="login">
-        <h3 class="text-center text-white pt-5">Login form</h3>
+      <div id="login" class="d-flex justify-content-center">
+
+      <div> <img src="logo1.jpg"/> </div>
+
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
-                        <form id="login-form" class="form" action="" method="post">
+                        <form id="login-form" class="form" action="" method="post" onSubmit = {this.onSubmit1}>
                             <h3 class="text-center text-info">Login</h3>
-                            <div class="form-group">
-                                <label for="username" class="text-info">Username:</label><br>
-                                <input type="text" name="username" id="username" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="text-info">Password:</label><br>
-                                <input type="text" name="password" id="password" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-  {/*
-  <div class="container py-5">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-6 mx-auto">
-
-                    <div class="card rounded-0">
-                        <div class="card-header">
-                            <h3 class="mb-0">Login</h3>
-                        </div>
-                        <div class="card-body">
-                            <form class="form" onSubmit = {this.onSubmit1}>
                             <div>
                                 <label class="custom-control custom-checkbox">
                                   {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
@@ -141,33 +112,31 @@ constructor(props)
                                 </label>
                             </div>
 
-                                <div class="form-group">
-                                    <label for="uname1">Username</label>
-                                    <input type="text" class="form-control form-control-lg rounded-0" name="username" value={username} onChange={this.onChange1} id="username" required />
-                                    <div class="invalid-feedback">Oops, you missed this one.</div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control form-control-lg rounded-0" name="password" value={password} onChange={this.onChange1} id="password" required/>
-                                    <div class="invalid-feedback">Enter your password too!</div>
-                                </div>
+                            <div class="form-group">
+                                <label for="username" class="text-info">Username:</label><br/>
+                                <input type="text" class="form-control rounded-0" name="username" id="username" value={username} onChange={this.onChange1} required />
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info">Password:</label><br/>
+                                <input type="password" class="form-control rounded-0" name="password" value={password} onChange={this.onChange1} id="password" required/>
+                            </div>
 
-                                <div>
-                                    <label class="custom-control custom-checkbox">
-                                       <h3 style={{color:'red'}}> {this.state.error2} </h3>
-                                    </label>
-                                </div>
-
+                            {/*
+                            <div>
+                                <label class="custom-control custom-checkbox">
+                                   <h3 style={{color:'red'}}> {this.state.error2} </h3>
+                                </label>
+                            </div>
+                            */}
+                            <div class="form-group">
                                 <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-      </div>
     </div>
-     */}
     )
  }
 }
