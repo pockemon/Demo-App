@@ -7,7 +7,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #17a2b8;
+  background-color: white;
   height: 100vh;
 }
 
@@ -16,7 +16,7 @@ body {
   max-width: 600px;
   height: 350px;
   border: 1px solid #9C9C9C;
-  background-color: #EAEAEA;
+  background-color: rgb(243,243,243);
 }
 
 #login .container #login-row #login-column #login-box #login-form {
@@ -35,4 +35,31 @@ h1,h2,h3,h4,h5,h6,label,span {
 body, html, .App, #root, .auth-wrapper {
   width: 100%;
   height: 100%;
+}
+
+.navbar{
+  height: auto;
+}
+.navbar-custom{
+  background-color: rgb(187,8,38);
+}
+
+.nav-link{
+  color: rgb(53,53,53);
+  font-size: 100;
+  line-height: 1.38;
+  font-weight: 700;
+}
+
+#image{
+  margin-top: 10px;
+}
+
+#nav-toggle-button{
+    background-color:yellow;
+    color: black;
+}
+
+#nav-icon {
+    background-color: black;
 }

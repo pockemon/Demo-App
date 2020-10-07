@@ -94,8 +94,6 @@ constructor(props)
 
       <div id="login" class="d-flex justify-content-center">
 
-      <div> <img src="logo1.jpg"/> </div>
-
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">

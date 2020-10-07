@@ -10,15 +10,15 @@ class MenuComponent extends Component {
       const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
 
         return (
-          <nav class="navbar navbar-inverse">
+          <nav class="navbar navbar-custom">
             <div class="container-fluid">
               <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
+                <button id="nav-toggle-button" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span class="icon-bar" id="nav-icon"></span>
+                  <span class="icon-bar" id="nav-icon"></span>
+                  <span class="icon-bar" id="nav-icon"></span>
                 </button>
-                <div> <img src="logo1.jpg"/> </div>
+                <div> <img src="logo1.jpg" id="image"/> </div>
               </div>
               <div class="collapse navbar-collapse" id="myNavbar">
 
